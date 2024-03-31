@@ -4,10 +4,13 @@ import mongoose from "mongoose";
 import userRoute from "./routes/userRoute.js";
 import eventRoute from "./routes/eventRoute.js";
 import participationRoute from "./routes/participationRoute.js";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use("/users", userRoute);
 app.use("/events", eventRoute);
