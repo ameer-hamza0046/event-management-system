@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const SignUp = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [password, setPassword] = useState("");
+  const [reEnterPassword, setReEnterPassword] = useState("");
+  const navigate = useNavigate();
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    if (password !== reEnterPassword) {
+      alert("Password is not matching to ReEnterPassword");
+    }
+    const user = {
+      name: name,
+      email: email,
+      password: password,
+      role: role,
+    };
+    axios
+      .post("http://localhost:5555/users/", user)
+      .then((response) => {
+        console.log(response.data);
+        alert("Sign Up Successful!! Please Login to continue...");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="container">
       <Navbar />
@@ -14,7 +44,9 @@ const SignUp = () => {
             type="text"
             className="form-control"
             id="inputName"
-            placeholder="Apple Papaya"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -24,39 +56,48 @@ const SignUp = () => {
             className="form-control"
             id="inputEmail"
             placeholder="name@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="roleSelect">Select Role</label>
-          <select className="form-control" id="roleSelect" defaultValue="">
-            <option value="" disabled>
-              Select an input
-            </option>
+          <label htmlFor="inputRole">Select Role</label>
+          <select
+            className="form-control"
+            id="inputRole"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="">Select an input</option>
             <option value="participant">Participant</option>
             <option value="organizer">Organizer</option>
             <option value="moderator">Moderator</option>
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="setPassword">Set Password</label>
+          <label htmlFor="inputPassword">Set Password</label>
           <input
             type="password"
             className="form-control"
-            id="setPassword"
+            id="inputPassword"
             placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="reEnterPassword">Re-Enter Password</label>
+          <label htmlFor="inputReEnterPassword">Re-Enter Password</label>
           <input
             type="password"
             className="form-control"
-            id="reEnterPassword"
+            id="inputReEnterPassword"
             placeholder="Re-Enter Password"
+            value={reEnterPassword}
+            onChange={(e) => setReEnterPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button onClick={handleSignUp} className="btn btn-primary">
+          Sign Up
         </button>
       </form>
       <Footer />

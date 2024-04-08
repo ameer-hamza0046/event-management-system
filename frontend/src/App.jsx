@@ -3,10 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
+import SignUp from "./SignUp";
+import Login from "./Login";
 import OrganizerLogin from "./organizer/OrganizerLogin";
 import ParticipantLogin from "./participant/ParticipantLogin";
 import ModeratorLogin from "./moderator/ModeratorLogin";
-import SignUp from "./SignUp";
 import ParticipantHome from "./participant/ParticipantHome";
 import OrganizerHome from "./organizer/OrganizerHome";
 import ModeratorHome from "./moderator/ModeratorHome";
@@ -21,6 +22,7 @@ const App = () => {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/participant/login" element={<ParticipantLogin />} />
       <Route path="/participant/home" element={<ParticipantHome />} />
       <Route path="/participant/my-events" element={<ParticipantMyEvents />} />
