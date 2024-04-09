@@ -1,22 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
-
-// this page is not used... but I am not deleting it, just in case
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [role, setRole] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    if (!role || !email || !password) {
+      alert("All fields are necessary.");
+      return;
+    }
+    axios
+      .get(`http://localhost:5555/users/${email}/${role}`)
+      .then((response) => {
+        if (!response.data || response.data.password !== password) {
+          console.log("Invalid Credentials!");
+          return;
+        }
+        console.log(response.data);
+        navigate(`/${role}/home`, { state: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="container">
       <Navbar />
       <form>
         <h2>Login</h2>
         <div className="form-group">
-          <label htmlFor="roleSelect">Select Role</label>
-          <select className="form-control" id="roleSelect" defaultValue="">
-            <option value="" disabled>
-              Select an input
-            </option>
+          <label htmlFor="inputRole">Select Role</label>
+          <select
+            className="form-control"
+            id="inputRole"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="">Select an input</option>
             <option value="participant">Participant</option>
             <option value="organizer">Organizer</option>
             <option value="moderator">Moderator</option>
@@ -29,6 +56,8 @@ const Login = () => {
             className="form-control"
             id="inputEmail"
             placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <small id="emailHelp" className="form-text text-muted">
             We'll never share your email with anyone else.
@@ -40,15 +69,14 @@ const Login = () => {
             type="password"
             className="form-control"
             id="inputPassword"
-            placeholder="Password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {/* <Link to={`/${role.toLowerCase()}/home`} className="btn btn-primary">
+        <button onClick={handleSignIn} className="btn btn-primary">
           Sign In
-        </Link> */}
-        <Link to={`/`} className="btn btn-primary">
-          Sign In
-        </Link>
+        </button>
         <p>
           <Link to="/signup">Sign Up</Link>
         </p>

@@ -14,7 +14,12 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     if (password !== reEnterPassword) {
-      alert("Password is not matching to ReEnterPassword");
+      alert("Password is not matching with ReEnterPassword");
+      return;
+    }
+    if (!name || !email || !role || !password) {
+      alert("All fields are mandatory.");
+      return;
     }
     const user = {
       name: name,
@@ -23,11 +28,24 @@ const SignUp = () => {
       role: role,
     };
     axios
-      .post("http://localhost:5555/users/", user)
+      .get(`http://localhost:5555/users/${email}/${role}`)
       .then((response) => {
-        console.log(response.data);
-        alert("Sign Up Successful!! Please Login to continue...");
-        navigate("/");
+        // first check if user exists
+        if (response.data) {
+          alert(`Email already associated with another ${role}.`);
+          return;
+        }
+        // if user doesn't already exists then create user
+        axios
+          .post("http://localhost:5555/users/", user)
+          .then((response) => {
+            console.log(response.data);
+            alert("Sign Up Successful!! Please Login to continue...");
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
