@@ -1,16 +1,15 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Login from "../components/Login";
 
-const OrganizerLogin = () => {
+const Contact = () => {
   return (
     <div className="container">
       <Navbar />
-      <Login role={"Organizer"} />
+      <div>You are on the contact Us page!!</div>
       <Footer />
     </div>
   );
 };
 
-export default OrganizerLogin;
+export default Contact;

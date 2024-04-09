@@ -1,5 +1,5 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 function Home() {
   return (
@@ -21,28 +21,21 @@ function Home() {
             Responsive left-aligned hero with image <br /> Event Mangament
             System
           </h1>
-          <p className="lead">Choose your role:</p>
+          <p className="lead">Get started:</p>
           <div className="d-grid gap-2 d-md-flex justify-content-md-start">
             <Link
-              to="/participant/login"
+              to="/login"
               type="button"
               className="btn btn-primary btn-lg px-4 me-md-2"
             >
-              Participant
+              Login
             </Link>
             <Link
-              to="/organizer/login"
+              to="/signup"
               type="button"
-              className="btn btn-primary btn-lg px-4 me-md-2"
+              className="btn btn-outline-secondary btn-lg px-4"
             >
-              Organizer
-            </Link>
-            <Link
-              to="/moderator/login"
-              type="button"
-              className="btn btn-primary btn-lg px-4"
-            >
-              Moderator
+              Sign Up
             </Link>
           </div>
         </div>

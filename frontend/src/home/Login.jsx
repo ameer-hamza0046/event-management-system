@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ const Login = () => {
       .get(`http://localhost:5555/users/${email}/${role}`)
       .then((response) => {
         if (!response.data || response.data.password !== password) {
-          console.log("Invalid Credentials!");
+          alert("Invalid Credentials!");
           return;
         }
         console.log(response.data);

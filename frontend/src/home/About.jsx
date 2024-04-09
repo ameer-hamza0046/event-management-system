@@ -1,16 +1,15 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Login from "../components/Login";
 
-const ModeratorLogin = () => {
+const About = () => {
   return (
     <div className="container">
       <Navbar />
-      <Login role={"Moderator"} />
+      <div>You are on the About Page!</div>
       <Footer />
     </div>
   );
 };
 
-export default ModeratorLogin;
+export default About;
