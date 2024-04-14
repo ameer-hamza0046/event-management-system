@@ -1,7 +1,7 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
-import laptop from "../images/laptop.jpg";
+import laptop from "./images/laptop.jpg";
 function Home() {
   return (
     <div className="container">

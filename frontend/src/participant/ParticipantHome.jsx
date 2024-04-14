@@ -1,21 +1,28 @@
-import React from "react";
-import ParticipantNavbar from "../components/participant/ParticipantNavbar";
-import ParticipantFooter from "../components/participant/ParticipantFooter";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import ParticipantNavbar from "./components/Navbar";
+import ParticipantFooter from "./components/Footer";
+import Hello from "./components/Hello";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const ParticipantHome = () => {
-  const data = useLocation().state;
-  console.log(data);
+  const [user, setUser] = useState({});
+  const { id } = useParams();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5555/users/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="container">
       <ParticipantNavbar />
-      <h2>Hello, {data.name}</h2>
-      <h3>{data.role}</h3>
-      {Object.keys(data).map((key, index) => (
-        <div key={index}>
-          {key}: {data[key]}
-        </div>
-      ))}
+      <Hello user={user} />
       <ParticipantFooter />
     </div>
   );

@@ -8,9 +8,6 @@ import Login from "./home/Login";
 import ParticipantHome from "./participant/ParticipantHome";
 import OrganizerHome from "./organizer/OrganizerHome";
 import ModeratorHome from "./moderator/ModeratorHome";
-import ParticipantMyEvents from "./participant/ParticipantMyEvents";
-import ParticipantOngoingEvents from "./participant/ParticipantOngoingEvents";
-import ParticipantUpcomingEvents from "./participant/ParticipantUpcomingEvents";
 
 const App = () => {
   return (
@@ -21,15 +18,6 @@ const App = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/participant/:id" element={<ParticipantHome />} />
-      <Route path="/participant/my-events" element={<ParticipantMyEvents />} />
-      <Route
-        path="/participant/ongoing-events"
-        element={<ParticipantOngoingEvents />}
-      />
-      <Route
-        path="/participant/upcoming-events"
-        element={<ParticipantUpcomingEvents />}
-      />
       <Route path="/organizer/:id" element={<OrganizerHome />} />
       <Route path="/moderator/:id" element={<ModeratorHome />} />
     </Routes>
