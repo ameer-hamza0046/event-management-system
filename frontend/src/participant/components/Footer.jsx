@@ -1,27 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ParticipantFooter = () => {
+const ParticipantFooter = ({ setElement }) => {
   return (
     <footer className="py-3 my-4">
       <ul className="nav justify-content-center border-bottom pb-3 mb-3">
         <li className="nav-item">
-          <Link className="nav-link px-2 text-muted" to="/">
+          <Link
+            className="nav-link px-2 text-muted"
+            onClick={() => setElement("home")}
+          >
             Home
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link px-2 text-muted" to="/">
+          <Link
+            className="nav-link px-2 text-muted"
+            onClick={() => setElement("my-events")}
+          >
             My Events
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link px-2 text-muted" to="/">
+          <Link
+            className="nav-link px-2 text-muted"
+            onClick={() => setElement("ongoing-events")}
+          >
             Ongoing Events
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link px-2 text-muted" to="/">
+          <Link
+            className="nav-link px-2 text-muted"
+            onClick={() => setElement("upcoming-events")}
+          >
             Upcoming Events
           </Link>
         </li>

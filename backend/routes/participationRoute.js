@@ -5,12 +5,12 @@ const router = express.Router();
 
 router.post("/", async (request, response) => {
   try {
-    if (!request.body.eventId || !request.body.participantEmail) {
+    if (!request.body.eventId || !request.body.participantId) {
       return response.send("Insufficient fields. Send all fields");
     }
     const newParticipation = {
       eventId: request.body.eventId,
-      participantEmail: request.body.participantEmail,
+      participantId: request.body.participantId,
     };
     const participation = await Participation.create(newParticipation);
     return response.send(participation);
@@ -41,25 +41,11 @@ router.get("/eventId/:eventId", async (request, response) => {
   }
 });
 
-router.get("/participantEmail/:participantEmail", async (request, response) => {
+router.get("/participantId/:participantId", async (request, response) => {
   try {
-    const { participantEmail } = request.params;
+    const { participantId } = request.params;
     const participation = await Participation.find({
-      participantEmail: participantEmail,
-    });
-    return response.send(participation);
-  } catch (error) {
-    console.log(error.message);
-    return response.send(error.message);
-  }
-});
-
-router.get("/:eventId/:participantEmail", async (request, response) => {
-  try {
-    const { eventId, participantEmail } = request.params;
-    const participation = await Participation.findOne({
-      eventId: eventId,
-      participantEmail: participantEmail,
+      participantId: participantId,
     });
     return response.send(participation);
   } catch (error) {

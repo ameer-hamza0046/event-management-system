@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const participationSchema = mongoose.Schema(
   {
     eventId: mongoose.ObjectId,
-    participantEmail: String,
+    participantId: mongoose.ObjectId,
   },
   {
     timestamps: true,

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ParticipantNavbar = () => {
+const ParticipantNavbar = ({ element, setElement }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand" onClick={() => setElement("home")}>
         Navbar
       </Link>
       <button
@@ -21,27 +21,46 @@ const ParticipantNavbar = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link
+              className={`nav-link ${element === "home" ? "active" : ""}`}
+              onClick={() => setElement("home")}
+            >
               Home
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link
+              className={`nav-link ${element === "my-events" ? "active" : ""}`}
+              onClick={() => setElement("my-events")}
+            >
               My Events
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link
+              className={`nav-link ${
+                element === "ongoing-events" ? "active" : ""
+              }`}
+              onClick={() => setElement("ongoing-events")}
+            >
               Ongoing Events
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link
+              className={`nav-link ${
+                element === "upcoming-events" ? "active" : ""
+              }`}
+              onClick={() => setElement("upcoming-events")}
+            >
               Upcoming Events
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link
+              className={`nav-link ${element === "sign-out" ? "active" : ""}`}
+              onClick={() => setElement("sign-out")}
+            >
               Sign Out
             </Link>
           </li>
