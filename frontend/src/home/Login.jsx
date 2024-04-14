@@ -23,8 +23,7 @@ const Login = () => {
           alert("Invalid Credentials!");
           return;
         }
-        console.log(response.data);
-        navigate(`/${role}/home`, { state: response.data });
+        navigate(`/${role}/${response.data._id}`);
       })
       .catch((error) => {
         console.log(error);

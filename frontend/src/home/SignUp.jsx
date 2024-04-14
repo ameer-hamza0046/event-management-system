@@ -21,12 +21,6 @@ const SignUp = () => {
       alert("All fields are mandatory.");
       return;
     }
-    const user = {
-      name: name,
-      email: email,
-      password: password,
-      role: role,
-    };
     axios
       .get(`http://localhost:5555/users/${email}/${role}`)
       .then((response) => {
@@ -36,6 +30,12 @@ const SignUp = () => {
           return;
         }
         // if user doesn't already exists then create user
+        const user = {
+          name: name,
+          email: email,
+          password: password,
+          role: role,
+        };
         axios
           .post("http://localhost:5555/users/", user)
           .then((response) => {

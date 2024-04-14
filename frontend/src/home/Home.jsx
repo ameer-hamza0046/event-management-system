@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import laptop from "../images/laptop.jpg";
 function Home() {
   return (
     <div className="container">
@@ -8,9 +9,9 @@ function Home() {
       <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div className="col-10 col-sm-8 col-lg-6">
           <img
-            src="bootstrap-themes.png"
+            src={laptop}
             className="d-block mx-lg-auto img-fluid"
-            alt="Bootstrap Themes"
+            alt="Image"
             width={700}
             height={500}
             loading="lazy"
@@ -18,8 +19,7 @@ function Home() {
         </div>
         <div className="col-lg-6">
           <h1 className="display-5 fw-bold lh-1 mb-3">
-            Responsive left-aligned hero with image <br /> Event Mangament
-            System
+            Event Mangament System
           </h1>
           <p className="lead">Get started:</p>
           <div className="d-grid gap-2 d-md-flex justify-content-md-start">

@@ -20,7 +20,7 @@ const App = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/participant/home" element={<ParticipantHome />} />
+      <Route path="/participant/:id" element={<ParticipantHome />} />
       <Route path="/participant/my-events" element={<ParticipantMyEvents />} />
       <Route
         path="/participant/ongoing-events"
@@ -30,8 +30,8 @@ const App = () => {
         path="/participant/upcoming-events"
         element={<ParticipantUpcomingEvents />}
       />
-      <Route path="/organizer/home" element={<OrganizerHome />} />
-      <Route path="/moderator/home" element={<ModeratorHome />} />
+      <Route path="/organizer/:id" element={<OrganizerHome />} />
+      <Route path="/moderator/:id" element={<ModeratorHome />} />
     </Routes>
   );
 };
