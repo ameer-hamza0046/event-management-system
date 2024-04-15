@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ParticipantNavbar from "./components/Navbar";
-import ParticipantFooter from "./components/Footer";
+import ParticipantNavbar from "./components/ParticipantNavbar";
+import ParticipantFooter from "./components/ParticipantFooter";
 import MyEvents from "./components/MyEvents";
 import Hello from "./components/Hello";
 import { useNavigate, useParams } from "react-router-dom";
