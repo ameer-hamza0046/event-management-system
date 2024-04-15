@@ -48,4 +48,17 @@ router.get("/:id", async (request, response) => {
   }
 });
 
+router.get("/organizerEmail/:email", async (request, response) => {
+  try {
+    let { email } = request.params;
+    // email has special characters such as @, which need to be decoded
+    email = decodeURI(email);
+    const events = await Event.find({ organizerEmail: email });
+    return response.send(events);
+  } catch (error) {
+    console.log(error.message);
+    return response.send(error.message);
+  }
+});
+
 export default router;

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios"
+import axios from "axios";
+
+// 1. create form to enter name and date and time
+// 2. set min date and max date
+// 3. on submission add event to the database as with status "pending" and with organizer email ID
 
 const CreateEvent = ({ user }) => {
   const curDate = new Date();
