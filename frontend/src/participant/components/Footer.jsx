@@ -24,14 +24,6 @@ const ParticipantFooter = ({ setElement }) => {
         <li className="nav-item">
           <Link
             className="nav-link px-2 text-muted"
-            onClick={() => setElement("ongoing-events")}
-          >
-            Ongoing Events
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            className="nav-link px-2 text-muted"
             onClick={() => setElement("upcoming-events")}
           >
             Upcoming Events

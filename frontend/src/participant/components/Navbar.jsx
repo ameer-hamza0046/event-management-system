@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ParticipantNavbar = ({ element, setElement }) => {
   return (
@@ -39,16 +39,6 @@ const ParticipantNavbar = ({ element, setElement }) => {
           <li className="nav-item">
             <Link
               className={`nav-link ${
-                element === "ongoing-events" ? "active" : ""
-              }`}
-              onClick={() => setElement("ongoing-events")}
-            >
-              Ongoing Events
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              className={`nav-link ${
                 element === "upcoming-events" ? "active" : ""
               }`}
               onClick={() => setElement("upcoming-events")}
@@ -57,10 +47,7 @@ const ParticipantNavbar = ({ element, setElement }) => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link
-              className={`nav-link ${element === "sign-out" ? "active" : ""}`}
-              onClick={() => setElement("sign-out")}
-            >
+            <Link className="nav-link" to="/">
               Sign Out
             </Link>
           </li>

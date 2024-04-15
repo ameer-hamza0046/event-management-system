@@ -3,20 +3,17 @@ import ParticipantNavbar from "./components/Navbar";
 import ParticipantFooter from "./components/Footer";
 import MyEvents from "./components/MyEvents";
 import Hello from "./components/Hello";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import UpcomingEvents from "./components/UpcomingEvents";
 
 const Element = ({ element, user }) => {
   if (element === "home") {
     return <Hello user={user} />;
   } else if (element === "my-events") {
     return <MyEvents user={user} />;
-  } else if (element === "ongoing-events") {
-    return <div>Ongoing Events</div>;
   } else if (element === "upcoming-events") {
-    return <div>Upcoming Events</div>;
-  } else if (element === "sign-out") {
-    return <div>Sign Out</div>;
+    return <UpcomingEvents user={user} />;
   }
   return <div>Error 123</div>;
 };
