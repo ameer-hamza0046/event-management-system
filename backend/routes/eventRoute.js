@@ -61,4 +61,17 @@ router.get("/organizerEmail/:email", async (request, response) => {
   }
 });
 
+router.put("/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+    const event = await Event.findByIdAndUpdate(id, request.body, {
+      new: true,
+    });
+    return response.send(event);
+  } catch (error) {
+    console.log(error.message);
+    response.send(error.message);
+  }
+});
+
 export default router;
