@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+// if the value of "view" is {-1} then this Table will be displayed
 const EventTable = ({ events, setView }) => {
   return (
     <table className="table">
@@ -34,6 +35,7 @@ const EventTable = ({ events, setView }) => {
   );
 };
 
+// if the value of "view" is not {-1} then this component will be displayed
 const ViewEvent = ({ events, setEvents, view, setView, user }) => {
   const curDate = new Date();
   const minDate = curDate.toISOString().slice(0, 16);
@@ -43,7 +45,7 @@ const ViewEvent = ({ events, setEvents, view, setView, user }) => {
     .slice(0, 16);
   /////////////
   const [eventName, setEventName] = useState(events[view].name);
-  let temp = events[view].time;
+  // slice is used to format the date and time so that the input could use it
   const [eventTime, setEventTime] = useState(events[view].time.slice(0, 16));
   /////////////
   const handleEditEvent = (e) => {
@@ -153,6 +155,7 @@ const ViewEvent = ({ events, setEvents, view, setView, user }) => {
   );
 };
 
+// main component of this page
 const MyEvents = ({ user }) => {
   const { email } = user;
   const [events, setEvents] = useState([]);
