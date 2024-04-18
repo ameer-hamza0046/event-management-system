@@ -32,6 +32,8 @@ const CreateEvent = ({ user }) => {
       .then((response) => {
         console.log(response.data);
         alert("Event Request Submitted Successfully.");
+        setEventName("");
+        setEventTime("");
       })
       .catch((error) => {
         alert("Error");
