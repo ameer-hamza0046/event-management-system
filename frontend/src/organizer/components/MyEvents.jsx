@@ -146,7 +146,7 @@ const ViewEvent = ({ events, setEvents, view, setView, user }) => {
               <th scope="row">{index + 1}</th>
               <td>{e.moderatorEmail}</td>
               <td>{e.time}</td>
-              <td>{e.comment}</td>
+              <td>{e.data}</td>
             </tr>
           ))}
         </tbody>
